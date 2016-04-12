@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int main(void)
+int main()
 {
     int c,d;
 
@@ -14,7 +14,7 @@ int main(void)
                 putchar(d);
             }
         }
-        else 
+        else  
         if (c>='a' && c<='z') {
             if ((d=c+13) <= 'z') {
                 putchar(d);
@@ -22,11 +22,12 @@ int main(void)
                 d=c-13;
                 putchar(d);
             }
+        }
         else {
             putchar(c);
         }
-        }
     }
+
 
 return 0;
 }
