@@ -15,9 +15,9 @@ void Shift_k(int* arr, int length, int shift) {
     if (shift<0) {
         shift *= -1;
     }
+    shift %= length;            //избавляемся от кратности
     int temp[shift];
-    int r = length - shift;
-    shift %= length;            //избавляемся от кратности 
+    int r = length - shift; 
     
     if (sh >= 0) {                              //сдвиг вправо при shift>0
         
