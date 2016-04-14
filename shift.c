@@ -1,25 +1,24 @@
 #include<stdio.h>
 
 void ShiftRight(int* arr, int n) {
-    int b = arr[n-1];
+    int b = arr[n - 1];
     for (int i = n-2; i >= 0; i--) {
         arr[i+1] = arr[i];
     }
     arr[0] = b;
 }
 
-void ShiftRight_k(int* arr, int n, int k) {
+void ShiftRight_k(int* arr, int length, int shift) {
     
-    int temp[n];
+    int temp[length];
     
-    for (int i = 0; i < n; i++) {
-        temp[(i+k) % n] = arr[i];
+    for (int i = 0; i < length; i++) {
+        temp[(i + shift) % length] = arr[i];
     }
     
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < length; i++) {
         arr[i] = temp[i];
     }
-    
 }
 
 int main() {
