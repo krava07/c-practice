@@ -21,8 +21,8 @@ void Shift_k(int* arr, int length, int shift) {
     
     if (sh >= 0) {                              //сдвиг вправо при shift>0
         
-        for (int i = length-1; i >= r; i--) {   //записываем элементы справа во временный массив
-            temp[i - r] = arr[i];
+        for (int i = length - 1; i >= r; i--) {   //записываем элементы справа во временный массив
+            temp[i-r] = arr[i];
         }
         for (int i = r-1; i >= 0; i--) {        //остальные элементы двигаем вправо
             arr[i+shift] = arr[i];
