@@ -13,28 +13,30 @@ public:
     DynArr() {
         size = 0;
         arr = (int *) malloc(size*sizeof(int));
-        if (arr == NULL) {
+        if (!arr) {
             cout<<"Error!"<<endl;
             exit(0);
         }
     };
-    DynArr(DynArr& x) {
-        //free(arr);
-        size = x.size;
-        arr = (int *) malloc(size*sizeof(int));
-        if (arr == NULL) {
-            cout<<"Error!"<<endl;
-            exit(0);
-        }
-    }
+    // DynArr(DynArr& x) {
+    //     //free(arr);
+    //     size = x.size;
+    //     arr = (int *) malloc(size*sizeof(int));
+    //     if (arr == NULL) {
+    //         cout<<"Error!"<<endl;
+    //         exit(0);
+    //     }
+    // }
     void Add(int x) {
-        arr = (int *) realloc(arr, (size+1)*sizeof(int));
-        if (arr == NULL) {
-            cout<<"Error!"<<endl;
-            exit(0);
+        int newSize = size + 1;
+        int* temp = (int *) realloc(arr, (newSize)*sizeof(int));
+        try {
+            if (!arr) {
+            throw    
         }
-        size++;
-        arr[size-1] = x;
+        arr = temp;
+        arr[size] = x;
+        size = newSize;
     }
     void Print() {
         for (int i = 0; i < size; i++) {
