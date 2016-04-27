@@ -1,4 +1,6 @@
 #include<iostream>
+#include <string.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -25,9 +27,7 @@ class List
                 Head = temp;
             }
         };
-        int Count() {
-            return length;
-        };
+        
         void Push(int x) {
             length++;
             element *temp = new element;
@@ -38,11 +38,14 @@ class List
         void Pop(int n) {
             element *temp = Head;
             if ((Head != NULL) && (n < length)) {
-                for (int i = 0; i < n; ++i)
+                for (int i = 0; i < n; i++)
                 {
                     temp = temp->Next;
                 }
-            }
+                delete temp;
+                //Head = temp->Next;
+                cout<< temp->x <<" deleted"<<endl;
+            }  
         }
         void Print() {
             element *temp = Head;
@@ -59,12 +62,16 @@ int main() {
     cout<<"please input n= "<<endl;
     cin>>n;
     
-    for (int i = 0; i < n; ++i)
+    for (int i = n-1; i >= 0; i--)
     {
         cout<<"x"<<i<<"= "<<endl;
         cin>>x;
         l.Push(x);
     }
-    
+    cout<<"____"<<endl;
+    l.Print();
+    cout<<"____"<<endl;
+    l.Pop(1);
+    cout<<"___"<<endl;
     l.Print();
 }
