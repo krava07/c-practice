@@ -20,9 +20,7 @@ public:
         arr = (int *) calloc(size, sizeof(int));
     }
     void Add(int x) {
-        
-        int* temp = (int *) realloc(arr, (size+1)*sizeof(int));
-        arr = temp;
+        arr = (int *) realloc(arr, (size+1)*sizeof(int));
         size++;
         arr[size-1] = x;
     }
@@ -44,7 +42,9 @@ int main()
     a.Add(4);
     a.Add(3);
     a.Add(2);
+    a.Add(1);
     
     a.Print();
+    cout<<endl;
     return 0;
 }
