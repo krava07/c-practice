@@ -1,6 +1,7 @@
 #include<iostream>
 #include <string.h>
 #include <stdlib.h>
+//#include <cstdlib>
 
 using namespace std;
 
@@ -11,24 +12,19 @@ class DynArr
 public:
     DynArr() {
         size = 0;
-        arr = new int [size + 1];
+        arr = (int *) calloc(size, sizeof(int));
     };
     DynArr(DynArr& x) {
-        delete [] arr;
+        free(arr);
         size = x.size;
-        arr = new int [size];
+        arr = (int *) calloc(size, sizeof(int));
     }
     void Add(int x) {
-        int *temp = new int [size + 1];
-        for(int i = 0; i < size; ++i) {
-            temp[i] = arr[i];
-        }
         
-        delete [] arr;
+        int* temp = (int *) realloc(arr, (size+1)*sizeof(int));
         arr = temp;
- 
-        arr[size] = x;
-        ++size;
+        size++;
+        arr[size-1] = x;
     }
     void Print() {
         for (int i = 0; i < size; i++) {
@@ -36,7 +32,7 @@ public:
         }
     }
     ~DynArr() {
-        delete []arr;
+        free(arr);
     };      
 };
 
