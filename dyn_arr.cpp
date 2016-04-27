@@ -12,15 +12,27 @@ class DynArr
 public:
     DynArr() {
         size = 0;
-        arr = (int *) calloc(size, sizeof(int));
+        arr = (int *) malloc(size*sizeof(int));
+        if (arr == NULL) {
+            cout<<"Error!"<<endl;
+            exit(0);
+        }
     };
     DynArr(DynArr& x) {
-        free(arr);
+        //free(arr);
         size = x.size;
-        arr = (int *) calloc(size, sizeof(int));
+        arr = (int *) malloc(size*sizeof(int));
+        if (arr == NULL) {
+            cout<<"Error!"<<endl;
+            exit(0);
+        }
     }
     void Add(int x) {
         arr = (int *) realloc(arr, (size+1)*sizeof(int));
+        if (arr == NULL) {
+            cout<<"Error!"<<endl;
+            exit(0);
+        }
         size++;
         arr[size-1] = x;
     }
@@ -39,9 +51,8 @@ int main()
 {
     DynArr a;
     a.Add(5);
-    a.Add(4);
-    a.Add(3);
-    a.Add(2);
+    a.Add(9);
+    a.Add(0);
     a.Add(1);
     
     a.Print();
